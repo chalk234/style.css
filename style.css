@@ -1,0 +1,69 @@
+/* style.css */
+html, body {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #0a0f1e;
+    color: #e0e0e0;
+    overflow: hidden;
+}
+
+/* 容器 */
+#container { width: 100%; height: 100%; position: relative; }
+
+/* 顶部导航 */
+.navbar {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 60px;
+    backdrop-filter: blur(20px);
+    background: rgba(10,15,30,0.6);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px; z-index: 100;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.navbar input, .navbar button {
+    margin-left: 10px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+}
+.navbar input { width: 200px; }
+.navbar button:hover { background: rgba(255,255,255,0.1); }
+
+/* 信息卡 */
+#infoCard {
+    position: absolute; top: 80px; right: 20px;
+    width: 320px; padding: 16px;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(25px);
+    border-radius: 28px;
+    display: none; flex-direction: column;
+    gap: 10px; z-index: 200;
+}
+#infoCard input, #infoCard textarea { 
+    width: 100%; padding: 8px; border-radius: 12px; border: none; 
+    background: rgba(0,0,0,0.3); color: #fff; outline: none; font-size: 14px; 
+}
+
+/* 底部按钮组 */
+.bottom-btn {
+    position: fixed; right: 20px; bottom: 20px;
+    display: flex; gap: 10px;
+    z-index: 100;
+}
+.bottom-btn button {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(30,144,255,0.8);
+    color: #fff;
+    cursor: pointer;
+}
+
+/* 自定义主题色（可通过 JS 修改 :root --main-color） */
+:root { --main-color: #1e90ff; }
