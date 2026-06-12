@@ -1,69 +1,228 @@
-/* style.css */
-html, body {
-    margin: 0; padding: 0;
-    width: 100%; height: 100%;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background: #0a0f1e;
-    color: #e0e0e0;
-    overflow: hidden;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:
+"Inter",
+"Microsoft YaHei",
+sans-serif;
 }
 
-/* 容器 */
-#container { width: 100%; height: 100%; position: relative; }
-
-/* 顶部导航 */
-.navbar {
-    position: fixed; top: 0; left: 0;
-    width: 100%; height: 60px;
-    backdrop-filter: blur(20px);
-    background: rgba(10,15,30,0.6);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 20px; z-index: 100;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-.navbar input, .navbar button {
-    margin-left: 10px;
-    padding: 8px 12px;
-    border-radius: 12px;
-    border: none;
-    background: rgba(255,255,255,0.05);
-    color: #fff;
-    outline: none;
-    cursor: pointer;
-}
-.navbar input { width: 200px; }
-.navbar button:hover { background: rgba(255,255,255,0.1); }
-
-/* 信息卡 */
-#infoCard {
-    position: absolute; top: 80px; right: 20px;
-    width: 320px; padding: 16px;
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(25px);
-    border-radius: 28px;
-    display: none; flex-direction: column;
-    gap: 10px; z-index: 200;
-}
-#infoCard input, #infoCard textarea { 
-    width: 100%; padding: 8px; border-radius: 12px; border: none; 
-    background: rgba(0,0,0,0.3); color: #fff; outline: none; font-size: 14px; 
+:root{
+--primary:#3b82f6;
+--bg:#020817;
+--glass:rgba(15,23,42,.72);
+--border:rgba(255,255,255,.08);
+--text:#f8fafc;
 }
 
-/* 底部按钮组 */
-.bottom-btn {
-    position: fixed; right: 20px; bottom: 20px;
-    display: flex; gap: 10px;
-    z-index: 100;
-}
-.bottom-btn button {
-    padding: 10px 14px;
-    border-radius: 12px;
-    border: none;
-    background: rgba(30,144,255,0.8);
-    color: #fff;
-    cursor: pointer;
+body{
+background:
+radial-gradient(
+circle at top,
+#0f172a,
+#020817
+);
+color:var(--text);
+height:100vh;
+overflow:hidden;
 }
 
-/* 自定义主题色（可通过 JS 修改 :root --main-color） */
-:root { --main-color: #1e90ff; }
+.topbar{
+position:fixed;
+top:20px;
+left:20px;
+right:20px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+z-index:999;
+}
+
+.glass{
+background:var(--glass);
+
+backdrop-filter:blur(24px);
+
+border:1px solid var(--border);
+
+border-radius:24px;
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.35);
+}
+
+#mapTitle{
+padding:14px 20px;
+
+font-size:20px;
+
+background:none;
+
+border:none;
+
+outline:none;
+
+color:white;
+
+width:280px;
+}
+
+.controls{
+display:flex;
+gap:12px;
+}
+
+button,
+input[type=file]{
+padding:12px 18px;
+
+border:none;
+
+border-radius:16px;
+
+cursor:pointer;
+
+background:var(--primary);
+
+color:white;
+
+font-weight:600;
+
+transition:.25s;
+}
+
+button:hover{
+transform:translateY(-2px);
+}
+
+#mapContainer{
+position:absolute;
+
+inset:0;
+
+overflow:hidden;
+}
+
+#mapImage{
+width:100%;
+height:100%;
+
+object-fit:contain;
+
+display:block;
+}
+
+#markerLayer{
+position:absolute;
+
+inset:0;
+}
+
+.marker{
+position:absolute;
+
+width:22px;
+height:22px;
+
+border-radius:50%;
+
+cursor:pointer;
+
+transform:
+translate(-50%,-50%);
+
+border:3px solid white;
+
+box-shadow:
+0 0 18px rgba(255,255,255,.45);
+
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+
+0%{
+transform:
+translate(-50%,-50%)
+scale(1);
+}
+
+50%{
+transform:
+translate(-50%,-50%)
+scale(1.15);
+}
+
+100%{
+transform:
+translate(-50%,-50%)
+scale(1);
+}
+}
+
+#infoPanel{
+
+position:fixed;
+
+right:20px;
+top:100px;
+
+width:360px;
+
+padding:24px;
+
+z-index:1000;
+
+background:var(--glass);
+
+backdrop-filter:blur(24px);
+
+border-radius:28px;
+
+border:1px solid var(--border);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.4);
+}
+
+#infoPanel h2{
+margin-bottom:10px;
+}
+
+#infoPanel p{
+line-height:1.8;
+opacity:.85;
+}
+
+#infoPanel button{
+margin-top:20px;
+width:100%;
+}
+
+@media(max-width:900px){
+
+.topbar{
+
+flex-direction:column;
+
+gap:10px;
+
+left:10px;
+right:10px;
+}
+
+#infoPanel{
+
+left:10px;
+right:10px;
+
+width:auto;
+
+top:auto;
+
+bottom:10px;
+}
+}
