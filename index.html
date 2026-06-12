@@ -1,32 +1,154 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>可编辑地图</title>
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>地图项目</title>
+
 <link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/konva@9.4.0/konva.min.js"></script>
+
 </head>
+
 <body>
 
-<div class="navbar">
-    <input type="text" id="pageTitleInput" placeholder="输入网页标题" value="可编辑地图">
-    <input type="file" id="mapUpload" accept="image/png, image/jpeg">
-    <input type="color" id="bgColorPicker" title="选择背景色">
+<!-- 顶栏 -->
+
+<header class="topbar">
+
+<div class="logo">
+地图项目
 </div>
 
-<div id="container"></div>
+<div class="toolbar">
 
-<div id="infoCard">
-    <input type="text" id="markerTitle" placeholder="标题">
-    <textarea id="markerContent" placeholder="描述文字"></textarea>
-    <input type="color" id="markerColor">
-    <button onclick="saveMarker()">保存标注</button>
+<input
+id="projectTitle"
+type="text"
+placeholder="输入项目名称">
+
+<label class="upload-btn">
+
+上传地图
+
+<input
+id="mapUpload"
+type="file"
+accept=".jpg,.jpeg,.png">
+
+</label>
+
+<input
+id="themeColor"
+type="color"
+value="#4F8CFF">
+
+<button id="toggleMarkers">
+显示/隐藏标记
+</button>
+
+<button id="exportProject">
+导出工程
+</button>
+
+<button id="importProjectBtn">
+导入工程
+</button>
+
+<input
+id="importProject"
+type="file"
+accept=".json"
+hidden>
+
 </div>
 
-<div class="bottom-btn">
-    <button onclick="toggleMarkers()">切换标注显示</button>
-    <button onclick="exportData()">导出JSON</button>
+</header>
+
+<!-- 主区域 -->
+
+<main id="workspace">
+
+<div id="canvasArea">
+
+<div id="mapContainer">
+
+<img
+id="mapImage"
+src=""
+alt="地图">
+
+<div id="markerLayer"></div>
+
+</div>
+
+</div>
+
+<!-- 编辑器 -->
+
+<aside id="editorPanel">
+
+<div class="panel-title">
+
+标记编辑器
+
+</div>
+
+<div class="field">
+
+<label>标题</label>
+
+<input
+id="markerTitle"
+type="text">
+
+</div>
+
+<div class="field">
+
+<label>内容</label>
+
+<textarea
+id="markerContent"></textarea>
+
+</div>
+
+<div class="field">
+
+<label>颜色</label>
+
+<input
+id="markerColor"
+type="color"
+value="#4F8CFF">
+
+</div>
+
+<button id="saveMarker">
+
+保存修改
+
+</button>
+
+<button id="deleteMarker">
+
+删除标记
+
+</button>
+
+</aside>
+
+</main>
+
+<!-- 提示 -->
+
+<div id="helpBox">
+
+双击地图创建标记
+
 </div>
 
 <script src="app.js"></script>
