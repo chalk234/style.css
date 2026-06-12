@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>可编辑地图</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/konva@9.4.0/konva.min.js"></script>
+</head>
+<body>
+
+<div class="navbar">
+    <input type="text" id="pageTitleInput" placeholder="输入网页标题" value="可编辑地图">
+    <input type="file" id="mapUpload" accept="image/png, image/jpeg">
+    <input type="color" id="bgColorPicker" title="选择背景色">
+</div>
+
+<div id="container"></div>
+
+<div id="infoCard">
+    <input type="text" id="markerTitle" placeholder="标题">
+    <textarea id="markerContent" placeholder="描述文字"></textarea>
+    <input type="color" id="markerColor">
+    <button onclick="saveMarker()">保存标注</button>
+</div>
+
+<div class="bottom-btn">
+    <button onclick="toggleMarkers()">切换标注显示</button>
+    <button onclick="exportData()">导出JSON</button>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
